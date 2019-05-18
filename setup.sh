@@ -9,7 +9,7 @@ if [ "$os" = "Darwin" ]; then
 	touch .qm_export_ports
 fi
 
-docker run -t --rm -v $(pwd)/$line:/${PWD##*/} -w /${PWD##*/} $dockerImage lib/menu.sh $@
+sudo docker run --user "1000:1000" -t --rm -v $(pwd)/$line:/${PWD##*/} -w /${PWD##*/} $dockerImage lib/menu.sh $@
 
 if [ -f .nodename ]; then
 	nodename=$(cat .nodename)
